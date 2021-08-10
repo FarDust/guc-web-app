@@ -37,6 +37,10 @@ export default new Router({
               component: () => import(/* webpackChunkName: "main-dashboard" */ './views/main/Dashboard.vue'),
             },
             {
+              path: 'news',
+              component: () => import(/* webpackChunkName: "main-news" */ './views/news/News.vue'),
+            },
+            {
               path: 'profile',
               component: RouterComponent,
               redirect: 'profile/view',

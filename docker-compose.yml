@@ -152,7 +152,7 @@ services:
       context: ./backend
       dockerfile: backend.dockerfile
       args:
-        INSTALL_DEV: ${INSTALL_DEV-false}
+        INSTALL_DEV: '${INSTALL_DEV}'
     deploy:
       labels:
         - traefik.enable=true
@@ -176,14 +176,14 @@ services:
       context: ./backend
       dockerfile: celeryworker.dockerfile
       args:
-        INSTALL_DEV: ${INSTALL_DEV-false}
+        INSTALL_DEV: '${INSTALL_DEV}'
   
   frontend:
     image: '${DOCKER_IMAGE_FRONTEND?Variable not set}:${TAG-latest}'
     build:
       context: ./frontend
       args:
-        FRONTEND_ENV: ${FRONTEND_ENV-production}
+        FRONTEND_ENV: ${FRONTEND_ENV}
     deploy:
       labels:
         - traefik.enable=true
@@ -197,4 +197,4 @@ volumes:
 networks:
   traefik-public:
     # Allow setting it to false for testing
-    external: ${TRAEFIK_PUBLIC_NETWORK_IS_EXTERNAL-true}
+    external: ${TRAEFIK_PUBLIC_NETWORK_IS_EXTERNAL}
