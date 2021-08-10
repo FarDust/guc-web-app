@@ -15,7 +15,8 @@
 * Start the stack with Docker Compose:
 
 ```bash
-docker-compose up -d
+docker compose --env-file ./config/.env.dev build
+docker compose --env-file ./config/.env.dev up -d
 ```
 
 * Now you can open your browser and interact with these URLs:
